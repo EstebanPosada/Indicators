@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@id/measurement_unit"
+        app:layout_constraintEnd_toStartOf="@id/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/name_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/name_label"
+        app:layout_constraintTop_toTopOf="@id/name_label"
+        tools:text="@string/name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/measurement_unit_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/measurement_unit"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@id/value_label"
+        app:layout_constraintEnd_toStartOf="@id/measurement_unit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_label" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/measurement_unit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/measurement_unit_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/measurement_unit_label"
+        app:layout_constraintTop_toTopOf="@id/measurement_unit_label"
+        tools:text="@string/measurement_unit" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/value_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/value"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measurement_unit_label" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/value_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/value_label"
+        app:layout_constraintTop_toTopOf="@id/value_label"
+        tools:text="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
