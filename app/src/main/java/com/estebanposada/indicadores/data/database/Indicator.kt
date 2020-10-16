@@ -9,8 +9,8 @@ data class Indicator(
     @SerializedName("fecha")
     val date: String,
     @SerializedName("uf")
-    val uf: uf,
-    val ivp: ivp,
+    val uf: generic,
+    val ivp: generic,
     @SerializedName("dolar")
     val dollar: dolar,
     @SerializedName("dolar_intercambio")
@@ -25,7 +25,14 @@ data class Indicator(
     @SerializedName("tasa_desempleo")
     val unemploymentRate: tasa_desempleo,
     val bitcoin: bitcoin
+)
 
+data class generic(
+    val codigo: String,
+    val nombre: String,
+    val unidad_medida: String,
+    val fecha: String,
+    val valor: Double
 )
 
 data class uf(

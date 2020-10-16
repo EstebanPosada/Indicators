@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.estebanposada.indicadores.App
 import com.estebanposada.indicadores.databinding.FragmentMainBinding
 import javax.inject.Inject
@@ -24,6 +25,15 @@ class MainFragment : Fragment() {
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.fetchData()
+
+        viewModel.indicators.observe(viewLifecycleOwner, { ind ->
+            binding.title.text = ind.version
+        })
     }
 
     override fun onDestroyView() {

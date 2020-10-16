@@ -1,7 +1,7 @@
 package com.estebanposada.indicadores.di
 
-import com.estebanposada.indicadores.service.repository.MainRepository
-import com.estebanposada.indicadores.service.repository.MainRepositoryImpl
+import com.estebanposada.indicadores.service.repository.*
+import com.estebanposada.indicadores.usecases.GetIndicators
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,5 +11,14 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun mainProvider(): MainRepository = MainRepositoryImpl()
+    fun mainProvider(remoteDataSource: RemoteDataSource): MainRepository =
+        MainRepositoryImpl(remoteDataSource)
+
+    @Singleton
+    @Provides
+    fun remoteDataSourceProvider(api: IndicatorApi): RemoteDataSource = RemoteDataSourceImpl(api)
+
+    @Singleton
+    @Provides
+    fun getIndicatorProvider(repository: MainRepository): GetIndicators = GetIndicators(repository)
 }
