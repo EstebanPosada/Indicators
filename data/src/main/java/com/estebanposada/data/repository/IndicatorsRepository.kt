@@ -8,10 +8,9 @@ class IndicatorsRepository(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource
 ) {
-    suspend fun getIndicators(): List<IndicatorDetails> {
+    suspend fun getIndicators() {
         val indicators = remoteDataSource.getIndicators()
         localDataSource.saveIndicators(indicators)
-        return localDataSource.getIndicators()
     }
 
     suspend fun findByCode(code: String): IndicatorDetails {

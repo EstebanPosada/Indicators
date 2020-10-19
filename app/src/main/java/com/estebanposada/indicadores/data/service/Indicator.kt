@@ -1,5 +1,6 @@
 package com.estebanposada.indicadores.data.service
 
+import com.estebanposada.indicadores.EMPTY
 import com.google.gson.annotations.SerializedName
 
 data class Indicator(
@@ -50,6 +51,4 @@ data class Serie(
     @SerializedName("valor")
     val value: Double
 )
-
-const val EMPTY = ""
 

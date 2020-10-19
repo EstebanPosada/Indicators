@@ -31,15 +31,14 @@ class MainViewModel @Inject constructor(
     fun fetchIndicators() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val data = getIndicators.invoke()
-                _indicators.postValue(data)
+                getIndicators.invoke()
             }
         }
     }
 
     fun filterIndicators(filter: String) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 val filtered = filterIndicators.invoke(filter)
                 _indicators.postValue(filtered)
             }

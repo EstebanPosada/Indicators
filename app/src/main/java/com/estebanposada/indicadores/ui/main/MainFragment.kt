@@ -2,15 +2,17 @@ package com.estebanposada.indicadores.ui.main
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.estebanposada.indicadores.App
+import com.estebanposada.indicadores.DEFAULT_QUERY
+import com.estebanposada.indicadores.SEARCH_QUERY
 import com.estebanposada.indicadores.databinding.FragmentMainBinding
 import javax.inject.Inject
 
@@ -59,10 +61,16 @@ class MainFragment : Fragment() {
             }
             true
         }
-
+        val query = savedInstanceState?.getString(SEARCH_QUERY) ?: DEFAULT_QUERY
+        viewModel.filterIndicators(query)
         viewModel.indicators.observe(viewLifecycleOwner, { indicators ->
             indicatorAdapter.setData(indicators)
         })
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(SEARCH_QUERY, binding.search.text.toString())
     }
 
     override fun onDestroyView() {

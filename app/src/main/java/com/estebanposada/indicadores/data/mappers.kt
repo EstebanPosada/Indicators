@@ -4,7 +4,7 @@ import com.estebanposada.domain.IndicatorDetailUpdate
 import com.estebanposada.domain.IndicatorDetails
 import com.estebanposada.domain.Indicators
 import com.estebanposada.domain.Serie
-import com.estebanposada.indicadores.data.service.EMPTY
+import com.estebanposada.indicadores.EMPTY
 import com.estebanposada.indicadores.data.database.model.IndicatorDetail as DomainIndicatorDetail
 import com.estebanposada.indicadores.data.database.model.IndicatorDetailUpdate as DomainUpdate
 import com.estebanposada.indicadores.data.database.model.Serie as DomainSerie
