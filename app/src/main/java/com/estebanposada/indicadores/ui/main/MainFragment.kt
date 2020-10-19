@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import android.view.inputmethod.EditorInfo
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.estebanposada.indicadores.App
 import com.estebanposada.indicadores.databinding.FragmentMainBinding
 import javax.inject.Inject
@@ -18,6 +21,7 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+    private val indicatorAdapter = IndicatorsAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,10 +33,35 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchData()
+        viewModel.fetchIndicators()
 
-        viewModel.indicators.observe(viewLifecycleOwner, { ind ->
-            binding.title.text = ind.version
+        binding.rvIndicators.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = indicatorAdapter
+            addItemDecoration(
+                DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+            )
+        }
+
+        binding.sort.setOnClickListener {
+            indicatorAdapter.sort()
+        }
+
+        indicatorAdapter.onItemClicked = {
+            findNavController().navigate(
+                MainFragmentDirections.actionMainFragmentToDetailFragment(it)
+            )
+        }
+
+        binding.search.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                viewModel.filterIndicators(v.text.toString())
+            }
+            true
+        }
+
+        viewModel.indicators.observe(viewLifecycleOwner, { indicators ->
+            indicatorAdapter.setData(indicators)
         })
     }
 

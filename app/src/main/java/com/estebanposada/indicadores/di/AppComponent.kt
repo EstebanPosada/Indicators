@@ -1,10 +1,9 @@
 package com.estebanposada.indicadores.di
 
-import android.content.Context
+import android.app.Application
 import com.estebanposada.indicadores.ui.detail.DetailFragment
-import com.estebanposada.indicadores.ui.main.MainActivity
+import com.estebanposada.indicadores.ui.MainActivity
 import com.estebanposada.indicadores.ui.main.MainFragment
-import com.estebanposada.indicadores.ui.main.MainViewModel
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -15,7 +14,7 @@ interface AppComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance context: Context): AppComponent
+        fun create(@BindsInstance app: Application): AppComponent
     }
 
     //val mainViewModel: MainViewModel

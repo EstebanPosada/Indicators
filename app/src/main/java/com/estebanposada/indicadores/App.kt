@@ -9,5 +9,5 @@ open class App : Application() {
     val appComponent: AppComponent by lazy { initializeComponent() }
 
     open fun initializeComponent(): AppComponent =
-        DaggerAppComponent.factory().create(applicationContext)
+        DaggerAppComponent.factory().create(this)
 }

@@ -1,6 +1,6 @@
 package com.estebanposada.indicadores.di
 
-import com.estebanposada.indicadores.service.repository.IndicatorApi
+import com.estebanposada.indicadores.data.service.IndicatorApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

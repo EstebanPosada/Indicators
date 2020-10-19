@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">Indicators</string>
+
+    <!-- Main Fragment -->
+    <string name="version">Version</string>
+    <string name="author">Author</string>
+    <string name="date">Date</string>
+
+    <!-- Indicator Item -->
     <string name="value">Value</string>
     <string name="measurement_unit">Measurement unit</string>
     <string name="name">Name</string>
+
+    <!-- Indicator Details -->
+    <string name="code">Code</string>
+    <string name="serie">Last month series</string>
+
 </resources>
